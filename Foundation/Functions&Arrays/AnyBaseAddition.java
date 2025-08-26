@@ -13,23 +13,18 @@ public class AnyBaseAddition {
 
     public static int getSum(int b, int n1, int n2) {
         // write ur code here
-        int carry = 0, mult = 1, res = 0;
-
-        while (carry > 0 || n1 > 0 || n2 > 0) {
+        int ans = 0, c = 0, pow = 1;
+        while (n1 > 0 || n2 > 0 || c > 0) {
             int d1 = n1 % 10;
             int d2 = n2 % 10;
-
-            int temp = carry + d1 + d2;
-            int q = temp / b;
-            int r = temp % b;
-            carry = q;
-            res = res + (r * mult);
-            mult = mult * 10;
-
             n1 = n1 / 10;
             n2 = n2 / 10;
+            int sum = d1 + d2 + c;
+            c = sum / b;
+            sum = sum % b;
+            ans = ans + (sum * pow);
+            pow = pow * 10;
         }
-
-        return res;
+        return ans;
     }
 }
